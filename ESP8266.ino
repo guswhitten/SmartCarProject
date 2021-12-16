@@ -6,10 +6,10 @@
 #include <SPI.h>
 #include <Wire.h>
 
-const char* ssid = "crystal";
-const char* pass = "ginny2018";
-unsigned long myChannelNumber = 1563689; // replace 0000000 with your channel number
-const char * myWriteAPIKey = "RVTAWXE146KJJNED"; // replace MyAPIKEY with your thingspeak write API key
+const char* ssid = "typeYourSSIDhere";
+const char* pass = "typerYourPASShere";
+unsigned long myChannelNumber = 0000000; // replace 0000000 with your channel number
+const char * myWriteAPIKey = ""; // replace MyAPIKEY with your thingspeak write API key
 const unsigned int MAX_MESSAGE_LENGTH = 8;
 
 WiFiClient client;
