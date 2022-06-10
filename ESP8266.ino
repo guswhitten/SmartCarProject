@@ -1,3 +1,8 @@
+/*
+This Arduino file is flashed to an ESP8266 wi-fi module. 
+The module can then be used to send data serially to a ThingSpeak channel.
+*/
+
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
@@ -6,8 +11,8 @@
 #include <SPI.h>
 #include <Wire.h>
 
-const char* ssid = "typeYourSSIDhere";
-const char* pass = "typerYourPASShere";
+const char* ssid = "typeYourSSIDhere";  //add your wifi SSID in the quotes
+const char* pass = "typerYourPASShere"; //add your wifi password in the quotes
 unsigned long myChannelNumber = 0000000; // replace 0000000 with your channel number
 const char * myWriteAPIKey = ""; // replace MyAPIKEY with your thingspeak write API key
 const unsigned int MAX_MESSAGE_LENGTH = 8;
