@@ -1,3 +1,12 @@
+/*
+This C code is run in Code Composer Studio for the TI-MSP430 MCU
+It is designed to collect analog data from three sensors hooked up by wires to the pins of the MSP430
+The MCU converts this data to digital version through its ADC module
+The program then serially outputs the data either to:
+-console
+-GUI application made with Windows Forms which then transmits data to ThingSpeak channel.
+*/
+
 #include <msp430g2553.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -43,8 +52,8 @@ void main(void)
     port_init();              //Good to go. P1.1 and P1.2 are used for uart TX and RX
     ConfigClocks();
     uart_init();              //19200 baud rate
-    ConfigureAdc();
-    hcsr04_init();
+    ConfigureAdc();             //analog-to-digital converter is configured
+    hcsr04_init();              //motion detection sensor is initialized
     _enable_interrupts();
     while(1){
         distance = diff/58;
