@@ -4,8 +4,8 @@
 The following video gives a demonstration of the project's scope, costs, functionality, challenges, and shortcomings.
 https://www.youtube.com/watch?v=QAWRW4KXTsA&t=8s&ab_channel=WhittenOswald
 
-## Making It Work:
-### Hardware (required)
+## Materials:
+### Hardware
 
 -Microcontroller:
 TI-MSP430G2553: https://www.ti.com/product/MSP430G2553
@@ -32,5 +32,20 @@ https://www.arduino.cc/en/software
 
 -Textbook reference (PDF Drive):
 Programmable Microcontrollers with Applications (Unsalan, Gurhan) https://www.pdfdrive.com/deniz-programmable-microcontrollers-with-applications-msp430-launchpad-with-ccs-and-grace-e196719615.html
+
+
+## Making it work:
+If using the Wi-Fi module: Be sure to insert your ThingSpeak channel #, Write API key, and WiFi SSID / password into ESP8266.ino before flashing the module.
+Then you can consult this resource for the corresponding pinout diagram: https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/
+
+If using a hardwired serial connection: Be sure to consult your computer's Device Manager 'Ports' section to determine the correct Port name/number. The default for this code is COM6. SmartCarGUI.cs will need to be updated to reflect these changes. Update the C# code also (if using ThingSpeak) with the relevant URL and field # for your channel.
+
+The final challenge will be to wire up the corresponding pins from the MSP430G2553 (see Textbook Reference) to the sensors using a Breadboard or other circuit board.
+
+
+
+
+
+
 
 
