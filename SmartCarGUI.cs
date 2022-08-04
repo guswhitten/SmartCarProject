@@ -50,30 +50,24 @@ namespace IES {
             WebClient client = new WebClient();
             label3.Text = client.DownloadString("http://api.thingspeak.com/channels/1563689/field/field2/last.text");
         }
-        private void button5_Click(object sender, EventArgs e)
-        {
+        private void button5_Click(object sender, EventArgs e) {
             WebClient client = new WebClient();
             label4.Text = client.DownloadString("http://api.thingspeak.com/channels/1563689/field/field3/last.text");
         }
 
         private void label1_Click(object sender, EventArgs e) {
-            if (String.IsNullOrEmpty(textBox1.Text))
-            {
+            if (String.IsNullOrEmpty(textBox1.Text)) {
                 textBox1.AppendText(RxString1);
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
-            {
+            if (String.IsNullOrEmpty(textBox2.Text)) {
                 textBox2.AppendText(RxString2);
             }
-            if (String.IsNullOrEmpty(textBox3.Text))
-            {
+            if (String.IsNullOrEmpty(textBox3.Text)) {
                 textBox3.AppendText(RxString3);
             }
-
         }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+        private void timer1_Tick(object sender, EventArgs e) {
             if (!string.Equals(textBox1.Text, "")) {
                 if (serialPort1.IsOpen) serialPort1.Close();
                 try {
@@ -98,16 +92,12 @@ namespace IES {
                     ThingsSpeakReq = (HttpWebRequest)WebRequest.Create(strUpdateURI);
                     ThingsSpeakResp = (HttpWebResponse)ThingsSpeakReq.GetResponse();
                     ThingsSpeakResp.Close();
-                    if (!(string.Equals(ThingsSpeakResp.StatusDescription, "OK")))
-                    {
+                    if (!(string.Equals(ThingsSpeakResp.StatusDescription, "OK"))) {
                         Exception exData = new Exception(ThingsSpeakResp.StatusDescription);
                         throw exData;
                     }
                 }
-                catch (Exception ex)
-                {
-
-                }
+                catch (Exception ex) { }
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
@@ -125,17 +115,8 @@ namespace IES {
         private void label2_Click(object sender, EventArgs e) { } 
         private void textBox2_TextChanged(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
-
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void label4_Click(object sender, EventArgs e) { }
+        private void textBox3_TextChanged(object sender, EventArgs e) { }
     }
 }
 
