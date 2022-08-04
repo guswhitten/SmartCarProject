@@ -81,8 +81,7 @@ void main(void)
 
         therm = (adc[4]* 48724 - 30634388) >> 16;
         therm = therm+135;
-        if (therm > 99 || therm < 10)
-        {
+        if (therm > 99 || therm < 10) {
             therm = 75;
         }
         ltoa(adc[3],v4,10);         //convert photocell digital data to a string, v4
@@ -110,7 +109,6 @@ __interrupt void Timer_A(void){
             diff=temp[i-1]-temp[i-2];
             i=0;
         }
-
 }
 void hcsr04_init() {
     TA0CTL = TASSEL_2|MC_1 ;        //SMCLK selected, up_mode selected for timer, compare mode (used for pwm)
@@ -138,15 +136,13 @@ void ConfigClocks(void) {
   BCSCTL1 = CALBC1_1MHZ;                     // Set range
   DCOCTL = CALDCO_1MHZ;                      // Set DCO step + modulation
  }
-void strreverse(char* begin, char* end)      // Function to reverse the order of the ASCII char array elements
-{
+void strreverse(char* begin, char* end) {      // Function to reverse the order of the ASCII char array elements
     char aux;
     while(end>begin)
         aux=*end, *end--=*begin, *begin++=aux;
 }
 
 void itoa(int value, char* str, int base) {         //Function to convert the signed int to an ASCII char array
-
     static char num[] = "0123456789abcdefghijklmnopqrstuvwxyz";
     char* wstr=str;
     int sign;
@@ -159,7 +155,6 @@ void itoa(int value, char* str, int base) {         //Function to convert the si
     sign=value;
     if (sign < 0)
         value = -value;
-
     do                                              // Perform interger-to-string conversion.
         *wstr++ = num[value%base];                  //create the next number in converse by taking the modolus
     while(value/=base);                             // stop when you get  a 0 for the quotient
