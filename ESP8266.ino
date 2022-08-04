@@ -41,21 +41,20 @@ void setup(){
 }
 
 void loop(void){
-  if (WiFi.status() != WL_CONNECTED) 
-  {
+  if (WiFi.status() != WL_CONNECTED) {  //if WiFi gets disconnected, try to reconnnect
     init_WIFI();
   }
   int newByte = 0;
   char c;
-  String first = "";
+  String first = "";   //initialize strings for each ThingSpeak field
   String second = "";
   String third = "";
-  bool receivedEOM = false;
+  bool receivedEOM = false; //initially EOM is false
   int count = 1;
   while (Serial.available() == 0) {
     delay(100);
   }
-  while (!receivedEOM) {
+  while (!receivedEOM) {  //continue reading until EndOfMessage received
     if (Serial.available() > 0) {
       newByte = Serial.read();
       c = (char) newByte;
@@ -75,9 +74,9 @@ void loop(void){
     }
     delay(100);
   }
-  ts.setField(1, first);
+  ts.setField(1, first);    //update ThingSpeak fields with newly received data
   ts.setField(2, second);
   ts.setField(3, third);
   ts.writeFields(myChannelNumber, myWriteAPIKey);
-  delay(15500);
+  delay(15500);  //ThingSpeak can only update data every 15 seconds. Wait before reading/transmitting
 }
